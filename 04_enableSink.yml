@@ -1,0 +1,13 @@
+kind: KafkaConnector
+apiVersion: kafka.strimzi.io/v1alpha1
+metadata:
+  name: file-sink
+  labels:
+    # must match connect cluster name
+    strimzi.io/cluster: my-connect
+spec:
+  tasksMax: 1
+  class: org.apache.camel.kafkaconnector.file.CamelFileSinkConnector
+  config:
+    topics: my-topic
+    camel.sink.url: file:/tmp/?fileName=test.txt&fileExist=Append

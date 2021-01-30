@@ -1,0 +1,14 @@
+kind: KafkaConnector
+apiVersion: kafka.strimzi.io/v1alpha1
+metadata:
+  name: file-source
+  labels:
+    # must match connect cluster name
+    strimzi.io/cluster: my-connect
+spec:
+  tasksMax: 1
+  class: org.kaliy.kafka.connect.rss.RssSourceConnector
+  config:
+    topic: my-topic
+    rss.urls: https://www.reddit.com/new/.rss?sort=new
+    sleep.seconds: 5
