@@ -10,3 +10,4 @@ kubectl exec -i $POD_NAME -- rm /tmp/test.txt
 
 
 kubectl exec -i my-cluster-kafka-0 -c kafka -- bin/kafka-topics.sh --zookeeper localhost:2081 --alter --topic my-topic --config retention.ms=1000
+kubectl exec -i my-cluster-kafka-0 -c kafka -- bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic my-topic --from-beginning
